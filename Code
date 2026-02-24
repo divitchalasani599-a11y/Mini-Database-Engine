@@ -1,0 +1,23 @@
+import json
+
+def create_table(name):
+    with open(f"{name}.json", "w") as f:
+        json.dump([], f)
+
+def insert(name, record):
+    with open(f"{name}.json", "r") as f:
+        data = json.load(f)
+
+    data.append(record)
+
+    with open(f"{name}.json", "w") as f:
+        json.dump(data, f)
+
+def select(name):
+    with open(f"{name}.json", "r") as f:
+        data = json.load(f)
+    print(data)
+
+create_table("students")
+insert("students", {"id":1, "name":"Divit"})
+select("students")
